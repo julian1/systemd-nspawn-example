@@ -1,0 +1,22 @@
+# This file describes the network interfaces available on your system
+# and how to activate them. For more information, see interfaces(5).
+
+# The loopback network interface
+auto lo
+iface lo inet loopback
+
+# The primary network interface
+allow-hotplug eth0
+iface eth0 inet dhcp
+# BEGIN ANSIBLE MANAGED BLOCK
+auto br0
+iface br0 inet static
+  address 10.10.1.1
+  netmask 255.255.255.0
+  bridge_ports dummy0
+  bridge_stp off
+  bridge_fd 0
+  post-up echo 1 > /proc/sys/net/ipv4/ip_forward
+  post-up   iptables -t nat -A POSTROUTING -s '10.10.1.0/24' -j MASQUERADE
+  post-down iptables -t nat -D POSTROUTING -s '10.10.1.0/24' -j MASQUERADE
+# END ANSIBLE MANAGED BLOCK

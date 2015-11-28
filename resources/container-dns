@@ -1,0 +1,16 @@
+# BEGIN ANSIBLE MANAGED BLOCK
+# the interface
+interface=br0
+# range for leases
+#dhcp-range=br0,10.10.1.10.100.1.1.20,4h
+dhcp-range=br0,10.10.1.10,10.10.1.20,4h
+# mapping dhcp ether -> ip
+dhcp-host=3a:55:c9:58:82:00,10.10.1.14
+# note we can set the mac address in the container in /etc/network/interfaces
+# hwaddress ether 00:01:04:1b:2C:1F
+dhcp-host=00:01:04:1b:2C:1F,10.10.1.15
+address=/whoot1/10.10.1.15
+
+dhcp-host= 00:01:04:1b:2C:1A,10.10.1.18
+address=/wily/10.10.1.18
+# END ANSIBLE MANAGED BLOCK
