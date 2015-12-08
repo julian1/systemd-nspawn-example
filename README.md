@@ -27,7 +27,7 @@ sudo ./start.sh wily
 ssh root@wily
 ```
 
-### clear errors on machine load failure 
+### To clear possible errors on machine load failure 
 ```
 sudo systemctl reset-failed machine-wily.scope
 ```
