@@ -34,3 +34,18 @@ ssh root@wily
 sudo systemctl reset-failed machine-wily.scope
 ```
 
+
+### Chef Provisioning
+```
+ cd systemd-nspawn-example/
+ sudo ./build.sh 
+ sudo ./start.sh 
+ sudo systemctl  start wily 
+ ssh-keygen -f "/home/user/.ssh/known_hosts" -R wily
+ ssh root@wily
+ cd chef
+ knife solo prepare root@wily
+ knife solo cook root@wily  -N wily  ./nodes/node.json 2>&1 | tee log.txt
+ ssh root@wily
+```
+
