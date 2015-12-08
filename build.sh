@@ -12,7 +12,7 @@ if [ ! -d "$NAME" ]; then
   /usr/sbin/debootstrap --verbose $VERSION ./$NAME $MIRROR || exit
 fi
 
-# ssh and python2.7 to be able to run ansible
+# ssh and python2.7 to support ansible
 systemd-nspawn -D./$NAME apt-get -y update
 systemd-nspawn -D./$NAME apt-get -y install ssh python2.7
 systemd-nspawn -D./$NAME ln -s /usr/bin/python2.7 /usr/bin/python
