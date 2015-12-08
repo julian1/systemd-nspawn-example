@@ -9,6 +9,8 @@ vim /etc/network/interfaces
 with resources/interfaces
 
 sudo systemctl restart networking
+
+add bridge ip to /etc/resolv.conf and perhaps disable /etc/dhclient/dhclient.conf resolution of dns 
 ```
 
 ### Install and configure dnsmasq
