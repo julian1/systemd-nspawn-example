@@ -32,8 +32,13 @@ ssh root@wily
 ### To clear possible errors on machine load failure 
 ```
 sudo systemctl reset-failed machine-wily.scope
+
+sudo /sbin/ifconfig vb-jessie2 down
+
 sudo machinectl list -a
 sudo machinectl kill wily
+
+sudo systemctl list-units -a
 sudo systemctl stop machine-wily.scope
 sudo systemctl disable machine-wily.scope
 ```

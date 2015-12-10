@@ -25,6 +25,7 @@ systemd-nspawn -D./$NAME ln -s /usr/bin/python2.7 /usr/bin/python
 # systemd-nspawn -D./$NAME apt-get -y install tcpdump dhcpdump screen aptitude arping
 
 # allow dhcp to set hostname
+# actually don't even need if use ansible
 systemd-nspawn -D./$NAME echo > ./$NAME/etc/hostname
 
 ## on host generate keypair - eg.  ssh-keygen -t rsa
