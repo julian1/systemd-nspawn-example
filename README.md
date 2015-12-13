@@ -1,7 +1,7 @@
 
 ## Example of bridged networking, dhcp/dns setup using dnsmasq, container creation using debootstrap, and nspawn to run the container
 
-### Create bridge
+### Create bridge br0 and configure dnsmasq
 ```
 apt-get install bridge-utils
 
@@ -10,15 +10,12 @@ with resources/interfaces
 
 sudo systemctl restart networking
 
-add bridge ip to /etc/resolv.conf and perhaps disable /etc/dhclient/dhclient.conf resolution of dns 
-```
 
-### Install and configure dnsmasq
-```
 apt-get install dnsmasq
 cp resources/container-dns  /etc/dnsmasq.d/
 sudo systemctl restart dnsmasq
 ```
+
 
 ### Build and run container
 ```
@@ -27,6 +24,10 @@ sudo ./build.sh
 sudo ./start.sh wily
 
 ssh root@wily
+
+# discovery
+sudo arp-scan -I br0  --localnet
+
 ```
 
 ### To clear possible errors on machine load failure 
