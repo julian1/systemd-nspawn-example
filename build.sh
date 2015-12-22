@@ -1,6 +1,6 @@
 #!/bin/bash -x
 
-NAME=jessie1
+NAME=jessie
 VERSION=jessie
 MIRROR=http://mirror.aarnet.edu.au/debian/
 MAC='00:01:04:1b:2C:1A'
@@ -20,7 +20,7 @@ systemd-nspawn -D./$NAME apt-get -y upgrade
 systemd-nspawn -D./$NAME apt-get -y install ssh python2.7
 systemd-nspawn -D./$NAME ln -s /usr/bin/python2.7 /usr/bin/python
 
-# for debugging
+# Helpful to debug
 # systemd-nspawn -D ./$NAME /bin/sh -c 'echo root:root | chpasswd'
 # systemd-nspawn -D./$NAME apt-get -y install tcpdump dhcpdump screen aptitude arping
 
