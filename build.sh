@@ -51,10 +51,17 @@ iface host0 inet dhcp
 hwaddress ether $MAC
 EOM
 
+# OK Debian has same problem - works, but must set hostname to localhost first
 
-# make ubuntu honor dhcP
+# make debian or ubuntu honor dhcp
 # http://askubuntu.com/questions/104918/how-to-get-the-hostname-from-a-dhcp-server
 # http://blog.schlomo.schapiro.org/2013/11/setting-hostname-from-dhcp-in-debian.html
-# echo unset old_host_name > ./$NAME/etc/dhcp/dhclient-enter-hooks.d/unset_old_hostname
-# ECHO > ./$NAME/etc/hostname
+
+# may be a further issue of nspawn overiding hostname 
+
+echo unset old_host_name > ./$NAME/etc/dhcp/dhclient-enter-hooks.d/unset_old_hostname
+
+# systemd-nspawn -D./$NAME hostname localhost
+
+echo localhost > ./$NAME/etc/hostname
 

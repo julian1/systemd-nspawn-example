@@ -34,15 +34,16 @@ sudo arp-scan -I br0  --localnet
 ```
 
 sudo systemctl list-units -a
-sudo systemctl reset-failed machine-wily.scope
+
+sudo systemctl stop machine-jessie.scope
+sudo systemctl reset-failed machine-jessie.scope
 
 sudo /sbin/ifconfig vb-jessie2 down
 
 sudo machinectl list -a
-sudo machinectl kill wily
+sudo machinectl kill jessie
 
-sudo systemctl stop machine-wily.scope
-sudo systemctl disable machine-wily.scope
+sudo systemctl disable machine-jessie.scope
 ```
 
 
