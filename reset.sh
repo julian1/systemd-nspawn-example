@@ -7,6 +7,8 @@ NAME=$1
 systemctl stop machine-$NAME.scope
 systemctl reset-failed machine-$NAME.scope
 
+brctl delif br0  vb-$NAME
+
 /sbin/ifconfig vb-$NAME down
 /sbin/ifdown vb-$NAME
 
