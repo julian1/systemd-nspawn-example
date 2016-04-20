@@ -2,12 +2,6 @@
 *.swo
 *.swn
 *.swm
-_build
-*.byte
-*.native
-dumps
-blocks
-deps
-blocks.dat*
-mydb
-
+resources
+old
+*.lck
